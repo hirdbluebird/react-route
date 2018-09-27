@@ -7,9 +7,8 @@ import {
 from 'react-router-dom';
 
 // App components
-import HTML from './courses/HTML';
-import CSS from './courses/CSS';
-import JavaScript from './courses/JavaScript'
+import CourseContainer from './courses/CourseContainer';
+import { HTMLCourses, CSSCourses, JSCourses } from '../data/courses';
 
 
 const Courses = ({match}) => (
@@ -24,9 +23,9 @@ const Courses = ({match}) => (
     </div>
 
     <Route exact path={match.path} render={() => <Redirect to={`${match.url}/html`} />} />
-    <Route path={`${match.url}/html`} component={HTML} />
-    <Route path={`${match.url}/css`} component={CSS} />
-    <Route path={`${match.url}/javascript`} component={JavaScript} />
+    <Route path={`${match.url}/html`} render={() => <CourseContainer data={HTMLCourses} /> } />
+    <Route path={`${match.url}/css`} render={() => <CourseContainer data={CSSCourses} /> } />
+    <Route path={`${match.url}/javascript`} render={() => <CourseContainer data={JSCourses} /> } />
   </div>
 );
 
